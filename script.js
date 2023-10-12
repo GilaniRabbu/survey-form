@@ -1,23 +1,20 @@
-var ResultField = $("#result");
+// Animation
+anime({
+    targets: 'form',
+    translateY: ['-100%', '0%'],
+    opacity: [0, 1],
+    duration: 1500
+});
 
-function insertNum(number) {
-    var existNum = ResultField.val();
-
-    ResultField.val(existNum + number);
-}
-
-function clearNum() {
-    ResultField.val('');
-}
-
-function Calculate() {
-    var Result = eval(ResultField.val());
-    ResultField.val(Result);
-}
-
-function DeleteNum() {
-    var NumberCut = ResultField.val();
-    if (NumberCut != '') {
-        ResultField.val(NumberCut.slice(0, -1));
-    }
-}
+// Focus Input
+window.addEventListener('load', function () {
+    const formInputs = document.querySelectorAll('.form input');
+    formInputs.forEach(input => {
+        input.addEventListener('focus', function () {
+            this.style.transform = 'scale(1.03)';
+        });
+        input.addEventListener('blur', function () {
+            this.style.transform = 'scale(1)';
+        });
+    });
+});
